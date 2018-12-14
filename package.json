@@ -1,0 +1,38 @@
+{
+	"name": "standup-boy",
+	"version": "0.0.0",
+	"description": "A simple module to create daily standup texts",
+	"license": "MIT",
+	"repository": "vikepic/standup-boy",
+	"author": {
+		"name": "vikepic",
+		"email": "valcazar96@gmail.com",
+		"url": "vikepic.github.io"
+	},
+	"bin": "cli.js",
+	"engines": {
+		"node": ">=6"
+	},
+	"scripts": {
+		"test": "xo"
+	},
+	"files": [
+		"cli.js"
+	],
+	"keywords": [
+		"cli-app",
+		"cli",
+		"standup",
+		"agile",
+		"scrum",
+		""
+	],
+	"dependencies": {
+		"clipboardy": "^1.2.3",
+		"inquirer": "^6.2.1",
+		"meow": "^5.0.0"
+	},
+	"devDependencies": {
+		"xo": "^0.21.0"
+	}
+}
