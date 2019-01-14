@@ -44,14 +44,12 @@ const questions = [
 
 inquirer.prompt(questions).then(answers => {
 	const res =
-		`
-:triumph: **\`What did I accomplish yesterday\`**
+		`:triumph: **\`What did I accomplish yesterday\`**
 ${answers.yesterday}
 :scream_cat: **\`What will I do today\`**
 ${answers.today}
 :cry: **\`What obstacles are impeding my progress? Any info I need or want to share?\`**
-${answers.obstacles}
-	`;
+${answers.obstacles}`;
 	console.log(res);
 	clipboardy.writeSync(res);
 	console.log('Copied the result to the clipboard!');
