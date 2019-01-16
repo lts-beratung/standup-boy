@@ -44,7 +44,7 @@ const questions = [
 
 inquirer.prompt(questions).then(answers => {
 	const res =
-		`:triumph: **\`What did I accomplish yesterday\`**
+		`@all :triumph: **\`What did I accomplish yesterday\`**
 
 ${answers.yesterday}
 
