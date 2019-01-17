@@ -33,6 +33,26 @@ $ standup-boy --help
 		Copied the result to the clipboard!
 ```
 
+## Configuration
+
+One can configure `standup-boy` to replace the default templates for the resulting standup text.
+
+You can obtain the path to the configuration file by simply running `standup-boy --path`. Edit the resulting file to override the defaults.
+
+An example of an alternative configuration, written in JSON format:
+
+```json
+{
+  "yesterday": "Hey, you! What did you do yesterday?",
+
+  "today": "Oh really? And what are you gonna do today?"
+
+  "obstacles": "Did you find any obstacles along the way, tho?"
+}
+```
+
+Mind that this configuration only alters the final text that gets copied into your clipboard.
+
 ## License
 
 MIT © [vikepic](https://vikepic.github.io)

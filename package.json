@@ -17,7 +17,8 @@
 		"test": "xo"
 	},
 	"files": [
-		"cli.js"
+		"cli.js",
+		"config.js"
 	],
 	"keywords": [
 		"cli-app",
@@ -29,6 +30,7 @@
 	],
 	"dependencies": {
 		"clipboardy": "^1.2.3",
+		"conf": "^2.1.0",
 		"inquirer": "^6.2.1",
 		"meow": "^5.0.0"
 	},
