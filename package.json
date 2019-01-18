@@ -18,6 +18,8 @@
 	},
 	"files": [
 		"cli.js",
+		"template.js",
+		"replace.js",
 		"config.js"
 	],
 	"keywords": [

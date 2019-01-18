@@ -4,6 +4,8 @@ const meow = require('meow');
 const inquirer = require('inquirer');
 const clipboardy = require('clipboardy');
 const config = require('./config.js');
+const template = require('./template.js');
+const replace = require('./replace.js');
 
 // eslint-disable-next-line no-unused-vars
 const cli = meow(`
@@ -35,7 +37,7 @@ const cli = meow(`
 );
 
 if (cli.flags.path) {
-	console.log(config.path());
+	console.log(config.path);
 	process.exit(0);
 }
 
@@ -58,19 +60,20 @@ const questions = [
 ];
 
 inquirer.prompt(questions).then(answers => {
-	const res =
-`${config.yesterday()}
+	let res =
+`${template.yesterday()}
 
 ${answers.yesterday}
 
-${config.today()}
+${template.today()}
 
 ${answers.today}
 
-${config.obstacles()}
+${template.obstacles()}
 
 ${answers.obstacles}`;
 
+	res = replace(res);
 	console.log(res);
 	clipboardy.writeSync(res);
 	console.log('Copied the result to the clipboard!');
