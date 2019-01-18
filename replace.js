@@ -10,6 +10,9 @@ module.exports = text => {
 			const value = replacer[key];
 			const regex = new RegExp(key, 'gi');
 			const matches = text.match(regex);
+			if (!matches) {
+				continue;
+			}
 			for (let i = 0; i < matches.length; ++i) {
 				const match = matches[i];
 				text = text.replace(match, value);
