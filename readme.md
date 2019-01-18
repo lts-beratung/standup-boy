@@ -2,7 +2,7 @@
 
 > A simple module to create daily standup texts :clock10:
 
-Standup-boy helps you create daily standup texts fast and easy.
+`standup-boy` helps you create daily standup texts fast and easy.
 It prompts you the usual stuff for a daily standup, then outputs a nicely-formatted, emoji-ready text for you to use in whatever platform you desire.
 Assumes markdown formatting.
 
@@ -33,14 +33,13 @@ $ standup-boy --help
 		Copied the result to the clipboard!
 ```
 
-
-## Configuration
+## Configuration
 
 You can obtain the path to the configuration file by simply running `standup-boy --path`. Edit the resulting file to override the defaults.
 
 Mind that this configuration only alters the final text that gets copied into your clipboard.
 
-### Templates
+### Templates
 
 One can configure `standup-boy` to replace the default templates for the resulting standup text.
 
@@ -56,7 +55,7 @@ An example of an alternative configuration, written in JSON format:
 }
 ```
 
-### Replace words
+### Replace words
 
 `standup-boy` can also be configured to search and replace certain keywords for, for example, automatically link to JIRA tasks. RegExp syntax is supported.
 
