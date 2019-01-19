@@ -65,7 +65,10 @@ An example of an alternative configuration, written in JSON format:
 
 ```json
 {
-  "JIRA-[0-9]*": "[%VAL%](https://your-jira.url/%VAL%)"
+  "replace" :
+  {
+    "JIRA-[0-9]*": "[%VAL%](https://your-jira.url/%VAL%)"
+  }
 }
 ```
 
