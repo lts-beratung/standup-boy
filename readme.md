@@ -1,4 +1,4 @@
-# standup-boy
+# standup-boy [![Build Status](https://travis-ci.org/vikepic/standup-boy.svg?branch=master)](https://travis-ci.org/vikepic/standup-boy) [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/xojs/xo) 
 
 > A simple module to create daily standup texts :clock10:
 
