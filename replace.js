@@ -13,9 +13,13 @@ module.exports = text => {
 			if (!matches) {
 				continue;
 			}
-			for (let i = 0; i < matches.length; ++i) {
-				const match = matches[i];
-				text = text.replace(match, value);
+			// Transform the array into a set to avoid
+			// duplicates
+			const unique = [...new Set(matches)];
+			for (let i = 0; i < unique.length; ++i) {
+				const match = unique[i];
+				text =
+					text.replace(new RegExp(match, 'gi'), value);
 				text =
 					text.replace(
 						new RegExp(SUB_WITH_MATCH, 'gi'),
