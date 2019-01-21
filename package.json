@@ -1,6 +1,6 @@
 {
 	"name": "standup-boy",
-	"version": "1.2.1",
+	"version": "1.2.2",
 	"description": "A simple module to create daily standup texts",
 	"license": "MIT",
 	"repository": "vikepic/standup-boy",
