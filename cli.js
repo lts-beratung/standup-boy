@@ -6,6 +6,7 @@ const clipboardy = require('clipboardy');
 const config = require('./config.js');
 const template = require('./template.js');
 const replace = require('./replace.js');
+const send = require('./send.js');
 
 // eslint-disable-next-line no-unused-vars
 const cli = meow(`
@@ -59,7 +60,23 @@ const questions = [
 	}
 ];
 
-inquirer.prompt(questions).then(answers => {
+function promptForSending(res) {
+	const question = [
+		{
+			type: 'confirm',
+			name: 'send',
+			message: 'Slack / Mattermost integration details found. Do you want to send the message?'
+		}
+	];
+
+	inquirer.prompt(question).then(async answer => {
+		if (answer.send) {
+			await send(res);
+		}
+	});
+}
+
+function processAnswers(answers) {
 	let res =
 `${template.yesterday()}
 
@@ -77,4 +94,14 @@ ${answers.obstacles}`;
 	console.log(res);
 	clipboardy.writeSync(res);
 	console.log('Copied the result to the clipboard!');
-});
+
+	if (config.has('username') &&
+		config.has('channel') &&
+		config.has('url')) {
+		promptForSending(res);
+	}
+}
+
+inquirer.prompt(questions).then(
+	answers => processAnswers(answers)
+);

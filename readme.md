@@ -86,6 +86,28 @@ I completed [JIRA-220](https://your-jira.url/JIRA-220) today!
 
 If translated to markdown, a nice link appears in place of the old, lame, jira task name.
 
+### Slack / Mattermost integration
+
+This module can also be configured to automatically send the resulting message to your desired slack / mattermost channel once you've answered all the questions.
+
+If your configuration is valid, a prompt should appear once your message has been written:
+
+```
+? Slack / Mattermost integration details found. Do you want to send the message? (Y/n)
+```
+
+On confirmation, the message will be sent to the destination specified by your configuration.
+
+An example of a valid configuration, written in JSON format:
+
+```json
+{
+	"username" : "vikepic",
+	"channel" : "daily-standup",
+	"url" : "https://your-slack-url"
+}
+```
+
 ## License
 
 MIT © [vikepic](https://vikepic.github.io)

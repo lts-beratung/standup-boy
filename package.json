@@ -20,7 +20,8 @@
 		"cli.js",
 		"template.js",
 		"replace.js",
-		"config.js"
+		"config.js",
+		"send.js"
 	],
 	"keywords": [
 		"cli-app",
@@ -33,6 +34,7 @@
 	"dependencies": {
 		"clipboardy": "^1.2.3",
 		"conf": "^2.1.0",
+		"got": "^9.6.0",
 		"inquirer": "^6.2.1",
 		"meow": "^5.0.0"
 	},
