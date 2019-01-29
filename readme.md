@@ -33,8 +33,8 @@ $ standup-boy --help
 		Copied the result to the clipboard!
 
 	Options
-			--path -p Get the path to the configuration file (read-only).
-			--project Specify the name of the project you want to send the message to.
+		--path -p Get the path to the configuration file (read-only).
+		--project Specify the name of the project you want to send the message to.
 ```
 
 ## Configuration
