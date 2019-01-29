@@ -16,7 +16,7 @@ $ npm install --global standup-boy
 $ standup-boy --help
 
 	Usage
-		standup-boy
+		standup-boy [--path | -p | --project projectName]
 
 	Examples
 		$ standup-boy
@@ -31,6 +31,7 @@ $ standup-boy --help
 		:cry: **`What obstacles are impeding my progress? Any info I need or want to share?`**
 		Not much...
 		Copied the result to the clipboard!
+
 	Options
 			--path -p Get the path to the configuration file (read-only).
 			--project Specify the name of the project you want to send the message to.

@@ -1,5 +1,5 @@
 'use strict';
-const config = require('./config.js');
+const config = require('./config');
 
 const SUB_WITH_MATCH = '%VAL%';
 

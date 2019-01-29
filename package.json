@@ -9,7 +9,7 @@
 		"email": "valcazar96@gmail.com",
 		"url": "vikepic.github.io"
 	},
-	"bin": "cli.js",
+	"bin": "src/cli.js",
 	"engines": {
 		"node": ">=6"
 	},
@@ -17,12 +17,7 @@
 		"test": "xo"
 	},
 	"files": [
-		"cli.js",
-		"template.js",
-		"replace.js",
-		"config.js",
-		"send.js",
-		"prompt.js"
+		"src"
 	],
 	"keywords": [
 		"cli-app",

@@ -1,7 +1,7 @@
 'use strict';
 const got = require('got');
-const config = require('./config.js');
-const prompt = require('./prompt.js');
+const config = require('./config');
+const prompt = require('./prompt');
 
 module.exports = async (text, projectName) => {
 	const answer = await prompt.sendQuestion();

@@ -2,15 +2,15 @@
 'use strict';
 const meow = require('meow');
 const clipboardy = require('clipboardy');
-const config = require('./config.js');
-const template = require('./template.js');
-const replace = require('./replace.js');
-const send = require('./send.js');
-const prompt = require('./prompt.js');
+const config = require('./config');
+const template = require('./template');
+const replace = require('./replace');
+const send = require('./send');
+const prompt = require('./prompt');
 
 const cli = meow(`
 	Usage
-		standup-boy
+		standup-boy [--path | -p | --project projectName]
 
 	Examples
 		$ standup-boy
@@ -25,6 +25,10 @@ const cli = meow(`
 		:cry: **\`What obstacles are impeding my progress? Any info I need or want to share?\`**
 		Not much...
 		Copied the result to the clipboard!
+
+	Options
+			--path -p Get the path to the configuration file (read-only).
+			--project Specify the name of the project you want to send the message to.
 `, {
 	inferType: true,
 	flags: {

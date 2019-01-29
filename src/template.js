@@ -1,5 +1,5 @@
 'use strict';
-const config = require('./config.js');
+const config = require('./config');
 
 const DEFAULT_YESTERDAY_TEXT =
 ':triumph: **`What did I accomplish yesterday`**';
