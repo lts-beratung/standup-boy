@@ -67,9 +67,10 @@ ${answers.obstacles}`;
 	clipboardy.writeSync(res);
 	console.log('Copied the result to the clipboard!');
 
-	if (config.has('username') &&
+	if ((config.has('username') &&
 		config.has('channel') &&
-		config.has('url')) {
+		config.has('url')) ||
+		config.has('projects')) {
 		send(res, cli.flags.project);
 	}
 }
