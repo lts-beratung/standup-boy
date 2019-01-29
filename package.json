@@ -21,7 +21,8 @@
 		"template.js",
 		"replace.js",
 		"config.js",
-		"send.js"
+		"send.js",
+		"prompt.js"
 	],
 	"keywords": [
 		"cli-app",

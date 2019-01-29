@@ -31,11 +31,14 @@ $ standup-boy --help
 		:cry: **`What obstacles are impeding my progress? Any info I need or want to share?`**
 		Not much...
 		Copied the result to the clipboard!
+	Options
+			--path -p Get the path to the configuration file (read-only).
+			--project Specify the name of the project you want to send the message to.
 ```
 
 ## Configuration
 
-You can obtain the path to the configuration file by simply running `standup-boy --path`. Edit the resulting file to override the defaults.
+You can obtain the path to the configuration file by simply running `standup-boy --path` (read-only). Edit the resulting file to override the defaults.
 
 Mind that this configuration only alters the final text that gets copied into your clipboard.
 
@@ -107,6 +110,38 @@ An example of a valid configuration, written in JSON format:
 	"url" : "https://your-slack-url"
 }
 ```
+
+Alternatively, you can have more than one project on your configuration file:
+
+```json
+{
+	"projects" :
+	{
+		"project-turnip":
+		{
+			"username" : "vikepic",
+				"channel" : "daily-standup-turnip",
+				"url" : "https://your-slack-url"
+		},
+			"project-avocado":
+			{
+				"username" : "vikepic",
+				"channel" : "daily-standup-avocado",
+				"url" : "https://your-slack-url"
+			}
+	} 
+}
+```
+
+If that is the case, you can specify with the `--project` flag which one will you send the message to. If not specified, the program will prompt to you which of the existing projects you want to use to send your message:
+
+```
+? Multiple projects found. Please, select the project you want to send the results to. (Use arrow keys)
+❯ project-turnip
+  project-avocado
+```
+
+Once selected, `standup-boy` will send the message to the project of your choice.
 
 ## License
 

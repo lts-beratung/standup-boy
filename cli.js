@@ -1,14 +1,13 @@
 #!/usr/bin/env node
 'use strict';
 const meow = require('meow');
-const inquirer = require('inquirer');
 const clipboardy = require('clipboardy');
 const config = require('./config.js');
 const template = require('./template.js');
 const replace = require('./replace.js');
 const send = require('./send.js');
+const prompt = require('./prompt.js');
 
-// eslint-disable-next-line no-unused-vars
 const cli = meow(`
 	Usage
 		standup-boy
@@ -32,6 +31,9 @@ const cli = meow(`
 		path: {
 			type: 'boolean',
 			alias: 'p'
+		},
+		project: {
+			type: 'string'
 		}
 	}
 }
@@ -40,40 +42,6 @@ const cli = meow(`
 if (cli.flags.path) {
 	console.log(config.path);
 	process.exit(0);
-}
-
-const questions = [
-	{
-		type: 'input',
-		name: 'yesterday',
-		message: 'What did I accomplish yesterday?'
-	},
-	{
-		type: 'input',
-		name: 'today',
-		message: 'What will I do today?'
-	},
-	{
-		type: 'input',
-		name: 'obstacles',
-		message: 'What obstacles are impeding my progress? Any info I need or want to share?'
-	}
-];
-
-function promptForSending(res) {
-	const question = [
-		{
-			type: 'confirm',
-			name: 'send',
-			message: 'Slack / Mattermost integration details found. Do you want to send the message?'
-		}
-	];
-
-	inquirer.prompt(question).then(async answer => {
-		if (answer.send) {
-			await send(res);
-		}
-	});
 }
 
 function processAnswers(answers) {
@@ -98,10 +66,10 @@ ${answers.obstacles}`;
 	if (config.has('username') &&
 		config.has('channel') &&
 		config.has('url')) {
-		promptForSending(res);
+		send(res, cli.flags.project);
 	}
 }
 
-inquirer.prompt(questions).then(
+prompt.initialQuestions().then(
 	answers => processAnswers(answers)
 );
