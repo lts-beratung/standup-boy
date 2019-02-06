@@ -1,4 +1,4 @@
-# standup-boy [![install size](https://packagephobia.now.sh/badge?p=standup-boy)](https://packagephobia.now.sh/result?p=standup-boy) [![Build Status](https://travis-ci.org/vikepic/standup-boy.svg?branch=master)](https://travis-ci.org/vikepic/standup-boy) [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/xojs/xo) 
+# standup-boy [![install size](https://flat.badgen.net/packagephobia/install/standup-boy)](https://packagephobia.now.sh/result?p=standup-boy) [![Build Status](https://flat.badgen.net/travis/vikepic/standup-boy)](https://travis-ci.org/vikepic/standup-boy) [![XO code style](https://flat.badgen.net/xo/status/vikepic/standup-boy)](https://github.com/xojs/xo) 
 
 > A simple module to create daily standup texts :clock10:
 
