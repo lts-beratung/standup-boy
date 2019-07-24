@@ -3,8 +3,9 @@
 const meow = require('meow');
 const clipboardy = require('clipboardy');
 const envPaths = require('env-paths');
+
 const paths = envPaths('standup-boy');
-const fs = require('fs-extra')
+const fs = require('fs-extra');
 const chalk = require('chalk');
 const config = require('./config');
 const template = require('./template');
@@ -12,7 +13,7 @@ const replace = require('./replace');
 const send = require('./send');
 const prompt = require('./prompt');
 
-const HISTORY_PATH = paths.data + "/history.log";
+const HISTORY_PATH = paths.data + '/history.log';
 
 const cli = meow(`
 	Usage
