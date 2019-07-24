@@ -2,11 +2,17 @@
 'use strict';
 const meow = require('meow');
 const clipboardy = require('clipboardy');
+const envPaths = require('env-paths');
+const paths = envPaths('standup-boy');
+const fs = require('fs-extra')
+const chalk = require('chalk');
 const config = require('./config');
 const template = require('./template');
 const replace = require('./replace');
 const send = require('./send');
 const prompt = require('./prompt');
+
+const HISTORY_PATH = paths.data + "/history.log";
 
 const cli = meow(`
 	Usage
@@ -27,6 +33,7 @@ const cli = meow(`
 		Copied the result to the clipboard!
 
 	Options
+			--log Display the message history.
 			--path -p Get the path to the configuration file (read-only).
 			--project Specify the name of the project you want to send the message to.
 `, {
@@ -45,6 +52,13 @@ const cli = meow(`
 
 if (cli.flags.path) {
 	console.log(config.path);
+	process.exit(0);
+}
+
+if (cli.flags.log) {
+	fs.ensureFileSync(HISTORY_PATH);
+	const res = fs.readFileSync(HISTORY_PATH, 'utf8');
+	console.log(res);
 	process.exit(0);
 }
 
@@ -73,8 +87,20 @@ ${answers.obstacles}`;
 		config.has('projects')) {
 		send(res, cli.flags.project);
 	}
+
+	saveToHistory(res);
 }
 
 prompt.initialQuestions().then(
 	answers => processAnswers(answers)
 );
+
+function saveToHistory(res) {
+	const historyMsg = `
+${chalk.yellow(new Date().toString())}
+
+${res}
+`;
+	fs.ensureFileSync(HISTORY_PATH);
+	fs.appendFileSync(HISTORY_PATH, historyMsg);
+}

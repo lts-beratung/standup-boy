@@ -33,6 +33,7 @@ $ standup-boy --help
 		Copied the result to the clipboard!
 
 	Options
+	    --log Display the message history.
 		--path -p Get the path to the configuration file (read-only).
 		--project Specify the name of the project you want to send the message to.
 ```
