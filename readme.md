@@ -1,6 +1,6 @@
-# standup-boy [![install size](https://flat.badgen.net/packagephobia/install/standup-boy)](https://packagephobia.now.sh/result?p=standup-boy) [![Build Status](https://flat.badgen.net/travis/vikepic/standup-boy)](https://travis-ci.org/vikepic/standup-boy) [![XO code style](https://flat.badgen.net/xo/status/standup-boy)](https://github.com/xojs/xo) 
+![Standup boy: Daily standup from the terminal](cover.png)
 
-> A simple module to create daily standup texts :clock10:
+[![install size](https://flat.badgen.net/packagephobia/install/standup-boy)](https://packagephobia.now.sh/result?p=standup-boy) [![Build Status](https://flat.badgen.net/travis/vikepic/standup-boy)](https://travis-ci.org/vikepic/standup-boy) [![XO code style](https://flat.badgen.net/xo/status/standup-boy)](https://github.com/xojs/xo) 
 
 `standup-boy` helps you create daily standup texts fast and easy.
 It prompts you the usual stuff for a daily standup, then outputs a nicely-formatted, emoji-ready text for you to use in whatever platform you desire.
