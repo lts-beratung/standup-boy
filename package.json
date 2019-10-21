@@ -3,11 +3,11 @@
 	"version": "1.5.0",
 	"description": "A simple module to create daily standup texts",
 	"license": "MIT",
-	"repository": "vikepic/standup-boy",
+	"repository": "lts-beratung/standup-boy",
 	"author": {
-		"name": "vikepic",
-		"email": "valcazar96@gmail.com",
-		"url": "vikepic.github.io"
+		"name": "lts-beratung",
+		"email": "github@lts-beratung.de",
+		"url": "https://www.lts-beratung.de/en.html"
 	},
 	"bin": "src/cli.js",
 	"engines": {
