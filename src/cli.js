@@ -6,7 +6,6 @@ const envPaths = require('env-paths');
 
 const paths = envPaths('standup-boy');
 const fs = require('fs-extra');
-const chalk = require('chalk');
 const config = require('./config');
 const template = require('./template');
 const replace = require('./replace');
@@ -74,25 +73,23 @@ if (cli.flags.log) {
 		if (cli.flags.from) {
 			date = Date.parse(cli.flags.from);
 			if (isNaN(date)) {
-				throw Error("Invalid date format provided!");
+				throw new TypeError('Invalid date format provided!');
 			}
 		}
 
 		for (let i = 0; i < res.length; i++) {
 			printLog(res[i], date);
 		}
-	}
-	catch (error) {
+	} catch (error) {
 		console.error(error);
-		console.error("Error while retrieving the logs.")
+		console.error('Error while retrieving the logs.');
 		process.exit(-1);
 	}
 	process.exit(0);
 }
 
 function printLog(log, date) {
-	if(Date.parse(log.date) > date )
-	{
+	if (Date.parse(log.date) > date) {
 		console.log(log.date);
 		console.log(JSON.stringify(log.messages, null, 2));
 		console.log();
@@ -133,7 +130,7 @@ prompt.initialQuestions().then(
 );
 
 function saveToHistory(answers) {
-	let log = {};
+	const log = {};
 	log.date = new Date().toString();
 	log.messages = [answers.yesterday, answers.today, answers.obstacles];
 
@@ -142,10 +139,11 @@ function saveToHistory(answers) {
 
 	let newHistLogsText;
 	try {
-		var histLogs = JSON.parse(histLogsText);
+		const histLogs = JSON.parse(histLogsText);
 		histLogs.push(log);
 		newHistLogsText = JSON.stringify(histLogs);
-	} catch {
+	} catch (error) {
+		// Ignoring error
 		newHistLogsText = JSON.stringify([log]);
 	}
 
