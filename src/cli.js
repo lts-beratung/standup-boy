@@ -60,7 +60,19 @@ if (cli.flags.log) {
 	fs.ensureFileSync(HISTORY_PATH);
 	try {
 		const res = JSON.parse(fs.readFileSync(HISTORY_PATH, 'utf8'));
-		console.log(JSON.stringify(res, null, 2));
+		// Get first day of the month
+		const today = new Date();
+		let date = new Date(today.getFullYear(), today.getMonth(), 1);
+		if (cli.flags.from) {
+			date = Date.parse(cli.flags.from);
+			if (isNaN(date)) {
+				throw Error("Invalid date format provided!");
+			}
+		}
+
+		for (let i = 0; i < res.length; i++) {
+			printLog(res[i], date);
+		}
 	}
 	catch (error) {
 		console.error(error);
@@ -68,6 +80,15 @@ if (cli.flags.log) {
 		process.exit(-1);
 	}
 	process.exit(0);
+}
+
+function printLog(log, date) {
+	if(Date.parse(log.date) > date )
+	{
+		console.log(log.date);
+		console.log(JSON.stringify(log.messages, null, 2));
+		console.log();
+	}
 }
 
 function processAnswers(answers) {
