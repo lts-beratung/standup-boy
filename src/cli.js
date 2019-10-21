@@ -13,7 +13,7 @@ const replace = require('./replace');
 const send = require('./send');
 const prompt = require('./prompt');
 
-const HISTORY_PATH = paths.data + '/history.log';
+const HISTORY_PATH = paths.data + '/history_v2.log';
 
 const cli = meow(`
 	Usage
@@ -58,14 +58,21 @@ if (cli.flags.path) {
 
 if (cli.flags.log) {
 	fs.ensureFileSync(HISTORY_PATH);
-	const res = fs.readFileSync(HISTORY_PATH, 'utf8');
-	console.log(res);
+	try {
+		const res = JSON.parse(fs.readFileSync(HISTORY_PATH, 'utf8'));
+		console.log(JSON.stringify(res, null, 2));
+	}
+	catch (error) {
+		console.error(error);
+		console.error("Error while retrieving the logs.")
+		process.exit(-1);
+	}
 	process.exit(0);
 }
 
 function processAnswers(answers) {
 	let res =
-`${template.yesterday()}
+		`${template.yesterday()}
 
 ${answers.yesterday}
 
@@ -89,19 +96,29 @@ ${answers.obstacles}`;
 		send(res, cli.flags.project);
 	}
 
-	saveToHistory(res);
+	saveToHistory(answers);
 }
 
 prompt.initialQuestions().then(
 	answers => processAnswers(answers)
 );
 
-function saveToHistory(res) {
-	const historyMsg = `
-${chalk.yellow(new Date().toString())}
+function saveToHistory(answers) {
+	let log = {};
+	log.date = new Date().toString();
+	log.messages = [answers.yesterday, answers.today, answers.obstacles];
 
-${res}
-`;
 	fs.ensureFileSync(HISTORY_PATH);
-	fs.appendFileSync(HISTORY_PATH, historyMsg);
+	const histLogsText = fs.readFileSync(HISTORY_PATH, 'utf8');
+
+	let newHistLogsText;
+	try {
+		var histLogs = JSON.parse(histLogsText);
+		histLogs.push(log);
+		newHistLogsText = JSON.stringify(histLogs);
+	} catch {
+		newHistLogsText = JSON.stringify([log]);
+	}
+
+	fs.writeFileSync(HISTORY_PATH, newHistLogsText);
 }
