@@ -17,7 +17,12 @@ const HISTORY_PATH = paths.data + '/history_v2.log';
 
 const cli = meow(`
 	Usage
-		standup-boy [--path | -p | --project projectName]
+		standup-boy [options]
+
+	Options
+	  --log  [--from date] Get a log of the messages sent. Specify the date from wich to retrieve te messages on with --from date
+	  --path -p Get the path to the configuration file (read-only).
+	  --project projectName Specify the name of the project you want to send the message to.
 
 	Examples
 		$ standup-boy
@@ -33,10 +38,13 @@ const cli = meow(`
 		Not much...
 		Copied the result to the clipboard!
 
-	Options
-			--log Display the message history.
-			--path -p Get the path to the configuration file (read-only).
-			--project Specify the name of the project you want to send the message to.
+		$ standup-boy --log --from "Mon Oct 19 2019"
+		Mon Oct 21 2019 21:21:09 GMT+0200 (Central European Summer Time)
+		[
+			"Did some cool stuff!",
+			"Work on some awesome stuff!",
+			"The coffee machine has run out of coffee!"
+		]
 `, {
 	inferType: true,
 	flags: {

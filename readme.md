@@ -14,28 +14,35 @@ $ npm install --global standup-boy
 
 ```
 $ standup-boy --help
+    Usage
+        standup-boy [options]
 
-	Usage
-		standup-boy [--path | -p | --project projectName]
+    Options
+      --log  [--from date] Get a log of the messages sent. Specify the date from wich to retrieve te messages on with --from date
+      --path -p Get the path to the configuration file (read-only).
+      --project projectName Specify the name of the project you want to send the message to.
 
-	Examples
-		$ standup-boy
-		? What did I accomplish yesterday? Something!
-		? What will I do today? Something Else!
-		? What obstacles are impeding my progress? Any info I need or want to share? Not much...
+    Examples
+        $ standup-boy
+        ? What did I accomplish yesterday? Something!
+        ? What will I do today? Something Else!
+        ? What obstacles are impeding my progress? Any info I need or want to share? Not much...
 
-		:triumph: **`What did I accomplish yesterday`**
-		Something!
-		:scream_cat: **`What will I do today`**
-		Something Else!
-		:cry: **`What obstacles are impeding my progress? Any info I need or want to share?`**
-		Not much...
-		Copied the result to the clipboard!
+        :triumph: **\`What did I accomplish yesterday\`**
+        Something!
+        :scream_cat: **\`What will I do today\`**
+        Something Else!
+        :cry: **\`What obstacles are impeding my progress? Any info I need or want to share?\`**
+        Not much...
+        Copied the result to the clipboard!
 
-	Options
-		--log Display the message history.
-		--path -p Get the path to the configuration file (read-only).
-		--project Specify the name of the project you want to send the message to.
+        $ standup-boy --log --from "Mon Oct 19 2019"
+        Mon Oct 21 2019 21:21:09 GMT+0200 (Central European Summer Time)
+        [
+            "Did some cool stuff!",
+            "Work on some awesome stuff!",
+            "The coffee machine has run out of coffee!"
+        ]
 ```
 
 ## Configuration
@@ -107,9 +114,9 @@ An example of a valid configuration, written in JSON format:
 
 ```json
 {
-	"username" : "vikepic",
-	"channel" : "daily-standup",
-	"url" : "https://your-slack-url"
+    "username" : "vikepic",
+    "channel" : "daily-standup",
+    "url" : "https://your-slack-url"
 }
 ```
 
@@ -117,21 +124,21 @@ Alternatively, you can have more than one project on your configuration file:
 
 ```json
 {
-	"projects" :
-	{
-		"project-turnip":
-		{
-			"username" : "vikepic",
-				"channel" : "daily-standup-turnip",
-				"url" : "https://your-slack-url"
-		},
-			"project-avocado":
-			{
-				"username" : "vikepic",
-				"channel" : "daily-standup-avocado",
-				"url" : "https://your-slack-url"
-			}
-	} 
+    "projects" :
+    {
+        "project-turnip":
+        {
+            "username" : "vikepic",
+                "channel" : "daily-standup-turnip",
+                "url" : "https://your-slack-url"
+        },
+            "project-avocado":
+            {
+                "username" : "vikepic",
+                "channel" : "daily-standup-avocado",
+                "url" : "https://your-slack-url"
+            }
+    }
 }
 ```
 
@@ -147,4 +154,4 @@ Once selected, `standup-boy` will send the message to the project of your choice
 
 ## License
 
-MIT © [vikepic](https://vikepic.github.io)
+MIT © [lts-beratung](https://www.lts-beratung.de/en.html)
